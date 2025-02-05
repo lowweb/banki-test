@@ -2,6 +2,13 @@
 import { RouterLink, RouterView } from 'vue-router'
 import BHeader from './components/blocks/BHeader.vue'
 import BFooter from './components/blocks/BFooter.vue'
+
+import { onMounted } from 'vue'
+import { useCardsStore } from '@/stores/cardsStore'
+const cardsStore = useCardsStore()
+onMounted(() => {
+  cardsStore.getCards()
+})
 </script>
 
 <template>

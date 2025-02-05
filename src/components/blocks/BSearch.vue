@@ -15,9 +15,5 @@ import UInput from '../ui/UInput.vue'
   display: flex;
   background-color: tomato;
   width: 100%;
-
-  &__input {
-    // max-width: 294px;
-  }
 }
 </style>

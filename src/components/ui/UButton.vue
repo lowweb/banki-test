@@ -3,7 +3,7 @@ const props = defineProps({})
 </script>
 
 <template>
-  <button class="button">
+  <button class="button" :class="{ 'button--icon': $slots.iconButton }">
     <span v-if="$slots.iconButton" class="button__icon">
       <slot name="iconButton" />
     </span>
@@ -14,6 +14,7 @@ const props = defineProps({})
 
 <style lang="scss">
 .button {
+  display: flex;
   font-family: $font-family;
   font-weight: 700;
   font-size: 14px;
@@ -24,6 +25,11 @@ const props = defineProps({})
   padding: 13px 30px 14px 31px;
   background-color: $color-brown;
   border: none;
+
+  &--icon {
+    padding: 13px 9px 14px 8px;
+    background-color: $color-trash;
+  }
 
   &:disabled {
     cursor: not-allowed;
