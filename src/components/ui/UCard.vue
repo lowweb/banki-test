@@ -29,6 +29,11 @@ const props = defineProps({
     required: false,
     default: '',
   },
+  id: {
+    type: Number,
+    required: true,
+    default: '',
+  },
 })
 
 const imgUrl = computed(() => getImageUrl('../assets/images/', props.img))
@@ -36,7 +41,7 @@ const buttonName = computed(() => (props.status === 'trash' ? 'В корзине
 </script>
 <template>
   <article class="card" :class="{ 'card--sold': status === 'sold' }">
-    <div class="card__image">
+    <div class="card__image" @click="this.$router.push(`/pictureinfo/${id}`)">
       <img :src="imgUrl" alt="image-caption" />
     </div>
 

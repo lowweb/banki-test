@@ -15,6 +15,7 @@ const cardsStore = useCardsStore()
         :oldprice="item.oldprice"
         :img="item.image"
         :status="item.status"
+        :id="item.id"
       />
     </div>
   </section>

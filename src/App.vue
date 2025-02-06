@@ -14,7 +14,12 @@ onMounted(() => {
 <template>
   <BHeader />
   <main class="page__main">
-    <RouterView></RouterView>
+    <RouterView v-slot="{ Component }">
+      <component :is="Component" />
+    </RouterView>
+    <RouterView name="popup" v-slot="{ Component }">
+      <component :is="Component" />
+    </RouterView>
   </main>
   <BFooter />
 </template>
