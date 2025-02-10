@@ -1,8 +1,19 @@
 <script setup>
 import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 import UButton from '../ui/UButton.vue'
 import IconCheck from '../icons/IconCheck.vue'
 import getImageUrl from '@/utils/getImgUrl'
+import { useCardsStore } from '@/stores/cardsStore'
+const cardsStore = useCardsStore()
+
+const selectCard = (id) => {
+  cardsStore.setActiveCard(id)
+  // console.log(cardsStore.activeCard)
+  router.push(`/pictureinfo/${id}`)
+  // console.log(id)
+}
 const props = defineProps({
   title: {
     type: String,
@@ -41,7 +52,7 @@ const buttonName = computed(() => (props.status === 'trash' ? 'В корзине
 </script>
 <template>
   <article class="card" :class="{ 'card--sold': status === 'sold' }">
-    <div class="card__image" @click="this.$router.push(`/pictureinfo/${id}`)">
+    <div class="card__image" @click="selectCard(props.id)">
       <img :src="imgUrl" alt="image-caption" />
     </div>
 

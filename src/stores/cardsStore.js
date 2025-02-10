@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 
 export const useCardsStore = defineStore('cardsStore', () => {
   const cards = ref([])
+  const activeCard = ref({})
 
   const getCards = async () => {
     try {
@@ -14,8 +15,15 @@ export const useCardsStore = defineStore('cardsStore', () => {
     }
   }
 
+  const setActiveCard = (value) => {
+    console.log(cards.value.find((item) => item.id === value))
+    activeCard.value = cards.value.find((item) => item.id === value)
+  }
+
   return {
     cards,
     getCards,
+    setActiveCard,
+    activeCard,
   }
 })
